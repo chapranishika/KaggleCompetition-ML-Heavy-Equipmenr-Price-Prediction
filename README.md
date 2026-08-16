@@ -51,3 +51,19 @@ Validation metrics on a held-out 20% split (log-trained, evaluated in dollar spa
 
 - `heavy-equipment-price-prediction.ipynb` — full notebook: EDA → RandomForest → XGBoost → LightGBM → LightGBM+CatBoost blend → hyperparameter tuning → K-fold target encoding → validation comparison
 - `train.csv`, `test.csv`, `sample_submission.csv`, `metadata.csv` — competition data
+- `app.py` / `train_model.py` / `model/` — Streamlit demo (see below)
+
+## Streamlit Demo
+
+A small app that takes machine specs as input and returns a predicted price, using the notebook's LightGBM model (native categorical handling, no blend — see `train_model.py` for the exact pipeline).
+
+```bash
+pip install -r requirements.txt
+
+# Model is already trained and saved in model/ — only needed if you want to retrain
+python train_model.py
+
+streamlit run app.py
+```
+
+Then open the local URL Streamlit prints (defaults to http://localhost:8501).
